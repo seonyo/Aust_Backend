@@ -1,9 +1,11 @@
 // require => import 구문이랑 비슷한 역할
-const { error } = require('console')
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 //포트 번호
 const port = 3000      
+
+app.use(bodyParser.json())      //json 사용하겠다
 
 //Post "/calc1/100/200"
 // 데이터를 "주소"를 통해서 보내기
@@ -28,6 +30,13 @@ app.post("/calc3", (req, res)=>{
     console.log(num1 + " " + num2)
     res.json({result: num1 + num2})
 })
+
+// 데이터를 "바디"를 통해서 보내는 방법
+app.post("/body_data", (req, res)=>{       
+    console.log(req.body)
+    res.json({})
+})
+
 
 app.listen(port , ()=> {
     console.log(`Example app listening on port ${port}`);

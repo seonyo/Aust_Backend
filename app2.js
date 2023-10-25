@@ -16,8 +16,16 @@ app.post("/calc1/:num1/:num2", (req, res) => {
 // POST /calc2?num1=100&num2=200
 // 데이터를 "쿼리스트링"을 통해서 보내기 (쇼핑몰에서 많이 씀)
 app.post("/calc2", (req, res)=>{       
-    const num1 = req.query.num1   
-    const num2 = +req.query.nun2
+    const num1 = +req.query.num1   
+    const num2 = +req.query.num2
+    res.json({result: num1 + num2})
+})
+
+// 데이터를 "헤더"를 통해서 보내는 방법
+app.post("/calc3", (req, res)=>{       
+    const num1 = Number(req.header("My-Number1"))
+    const num2 = Number(req.header("My-Number2"))
+    console.log(num1 + " " + num2)
     res.json({result: num1 + num2})
 })
 

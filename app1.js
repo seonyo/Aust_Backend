@@ -1,4 +1,5 @@
 // require => import 구문이랑 비슷한 역할
+const { error } = require('console')
 const express = require('express')
 const app = express()
 //포트 번호
@@ -19,6 +20,22 @@ app.get('/hello', (req, res) => {
 app.get("/data", (req, res)=>{
     res.json({name : "sun", age : 20})
 })
+
+let array=[]
+app.get("/array", (req, res) => {
+    res.json(array);
+})
+
+app.post("/array", (req, res) => {
+    array.push({content : array.length+1})
+    res.json({result : "ok"});
+});
+
+app.delete("/array", (req,res)=>{
+    array = []
+    res.json({result : "ok"});
+});
+
 
 app.listen(port , ()=> {
     console.log(`Example app listening on port ${port}`);

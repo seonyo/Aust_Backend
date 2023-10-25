@@ -16,6 +16,10 @@ app.get('/hello', (req, res) => {
     res.send("<h1>Hello</h1>")
 })
 
+app.get("/data", (req, res)=>{
+    res.json({name : "sun", age : 20})
+})
+
 app.listen(port , ()=> {
     console.log(`Example app listening on port ${port}`);
 })
